@@ -2,13 +2,13 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#391212] text-[#eddbc2]">
-      <div className="container mx-auto px-8 md:px-12 lg:px-16 py-12">
+    <footer id="footer" className="bg-darkBrown w-full text-beige">
+      <div className="container max-w-5xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
             <h3 className="text-xl font-bold">AJ's Cakes</h3>
-            <p className="text-[#d18f8f] text-sm">
+            <p className="text-beige/80 text-sm">
               Creating sweet memories with every slice.
             </p>
           </div>
@@ -18,22 +18,22 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-[#d18f8f] hover:text-[#eddbc2] text-sm transition-colors">
+                <Link href="/" className="text-beige/80 hover:text-beige text-sm transition-colors">
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/cakes" className="text-[#d18f8f] hover:text-[#eddbc2] text-sm transition-colors">
+                <Link href="/cakes" className="text-beige/80 hover:text-beige text-sm transition-colors">
                   Our Cakes
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-[#d18f8f] hover:text-[#eddbc2] text-sm transition-colors">
+                <Link href="/about" className="text-beige/80 hover:text-beige text-sm transition-colors">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-[#d18f8f] hover:text-[#eddbc2] text-sm transition-colors">
+                <Link href="/contact" className="text-beige/80 hover:text-beige text-sm transition-colors">
                   Contact
                 </Link>
               </li>
@@ -43,7 +43,7 @@ export default function Footer() {
           {/* Contact Info */}
           <div>
             <h4 className="font-semibold mb-4">Contact Us</h4>
-            <ul className="space-y-2 text-sm text-[#d18f8f]">
+            <ul className="space-y-2 text-sm text-beige/80">
               <li>123 Sweet Street</li>
               <li>Bakery City, BC 12345</li>
               <li>Phone: (555) 123-4567</li>
@@ -57,7 +57,7 @@ export default function Footer() {
             <div className="flex gap-4">
               <a
                 href="#"
-                className="text-[#d18f8f] hover:text-[#eddbc2] transition-colors"
+                className="text-beige/80 hover:text-beige transition-colors"
                 aria-label="Facebook"
               >
                 <svg
@@ -75,7 +75,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
-                className="text-[#d18f8f] hover:text-[#eddbc2] transition-colors"
+                className="text-beige/80 hover:text-beige transition-colors"
                 aria-label="Instagram"
               >
                 <svg
@@ -96,7 +96,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-[#74342b]/20 mt-12 pt-8 text-center text-sm text-[#d18f8f]">
+        <div className="border-t border-[#74342b]/20 mt-12 pt-8 text-center text-sm text-beige/80">
           <p>&copy; {new Date().getFullYear()} AJ's Cakes. All rights reserved.</p>
         </div>
       </div>

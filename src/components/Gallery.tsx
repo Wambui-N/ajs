@@ -107,8 +107,8 @@ export default function CakeCarousel() {
   };
 
   return (
-    <section className="relative min-h-[70vh] overflow-hidden py-20">
-      <div className="container mx-auto px-4">
+    <section id="gallery" className="relative min-h-[70vh] overflow-hidden py-20">
+      <div className="container max-w-5xl mx-auto px-4">
         <div className="mb-12 text-center">
           <h2 className="mb-4 text-4xl font-bold tracking-tight text-darkBrown md:text-5xl">
             Our Cake Gallery

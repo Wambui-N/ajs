@@ -46,12 +46,12 @@ export default function About() {
   ];
 
   return (
-    <section className="relative w-full overflow-hidden py-16 md:py-24">
+    <section id="about" className="relative w-full overflow-hidden py-16 md:py-24">
       {/* Decorative elements */}
       {/* <div className="absolute inset-0 bg-[url('/pattern.png')] opacity-5" /> */}
       
-      <div className="container mx-auto">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-12 md:flex-row md:gap-16">
+      <div className="container max-w-5xl mx-auto px-4">
+        <div className="mx-auto flex flex-col items-center gap-12 md:flex-row md:gap-16">
           {/* About Image */}
           <motion.div 
             initial={{ opacity: 0, x: -50 }}

@@ -68,8 +68,8 @@ export default function OrderSection() {
   }
 
   return (
-    <section className="w-full bg-beige py-20 relative overflow-hidden">
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="menu" className="w-full bg-beige py-20 relative overflow-hidden">
+      <div className="container max-w-5xl mx-auto px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">

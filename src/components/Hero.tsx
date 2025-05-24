@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
     <header className="relative min-h-[70vh] flex flex-col justify-center pt-20 pb-8">
-      <div className="container">
+      <div className="container max-w-5xl mx-auto px-4">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           {/* Headline and Subheading */}
           <div className="flex-1">
@@ -16,13 +17,13 @@ export default function Hero() {
             </p>
           </div>
           {/* Learn More Button */}
-          <div className="flex-1 flex md:justify-end items-center mt-4 md:mt-0">
-            <button className="flex items-center gap-2 bg-[#d18f8f] hover:bg-[#74342b] text-beige px-6 py-2 rounded-full text-sm font-medium transition-colors shadow">
-              Learn More
+          <div className="flex-1 flex md:justify-end items-end mt-4 md:mt-0">
+            <Link href="#menu" className="flex items-center gap-2 bg-[#d18f8f] hover:bg-[#74342b] text-beige px-6 py-2 rounded-full text-sm font-medium transition-colors shadow">
+              Order Now
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </button>
+            </Link>
           </div>
         </div>
         {/* Banner Image */}
