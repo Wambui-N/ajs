@@ -36,7 +36,7 @@ export default function OrderForm({ initialFlavour, initialSize, onClose }: Orde
     e.preventDefault()
     setIsSubmitting(true)
     
-    const message = `Hello, I would like to order a ${initialSize} ${initialFlavour}.\nName: ${name}\nPhone: ${phone}\nPrice: KES ${getPrice().toLocaleString()}`
+      const message = `Hello, I'm ${name} and I would like to order a ${initialSize} ${initialFlavour}.`
     const url = `https://wa.me/254712137749?text=${encodeURIComponent(message)}`
     window.open(url, "_blank")
     onClose()
@@ -67,20 +67,6 @@ export default function OrderForm({ initialFlavour, initialSize, onClose }: Orde
           className="w-full px-4 py-3 rounded-lg border border-lightPink/20 focus:ring-2 focus:ring-lightPink focus:border-transparent"
           required
           placeholder="Enter your name"
-        />
-      </div>
-
-      <div>
-        <label className="block text-sm font-medium text-darkBrown mb-2">
-          Phone Number
-        </label>
-        <input
-          type="tel"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          className="w-full px-4 py-3 rounded-lg border border-lightPink/20 focus:ring-2 focus:ring-lightPink focus:border-transparent"
-          required
-          placeholder="Enter your phone number"
         />
       </div>
 
