@@ -41,7 +41,7 @@ export default function Hero() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7, delay: 0.3 }}
             >
-              <Link href="#menu" className="flex items-center gap-2 bg-[#d18f8f] hover:bg-[#74342b] text-beige px-6 py-2 rounded-full text-sm font-medium transition-colors shadow">
+              <Link href="#menu" className="flex items-center gap-2 bg-[#d18f8f] hover:bg-[#74342b] text-beige px-6 py-3 rounded-full text-sm font-medium transition-colors shadow">
                 Order Now
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />

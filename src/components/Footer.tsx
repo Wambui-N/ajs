@@ -57,7 +57,7 @@ export default function Footer() {
             <div className="flex gap-4">
               <a
                 href="#"
-                className="text-beige/80 hover:text-beige transition-colors"
+                className="text-beige/80 hover:text-beige transition-colors p-2"
                 aria-label="Facebook"
               >
                 <svg
@@ -75,7 +75,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
-                className="text-beige/80 hover:text-beige transition-colors"
+                className="text-beige/80 hover:text-beige transition-colors p-2"
                 aria-label="Instagram"
               >
                 <svg

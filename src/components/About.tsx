@@ -17,7 +17,7 @@ function Feature({ title, description, icon }: FeatureProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="group relative min-w-[280px] flex-1 rounded-2xl p-8 shadow-lg bg-white backdrop-blur-sm transition-all hover:shadow-xl"
+      className="group relative min-w-[280px] flex-1 rounded-2xl p-8 shadow-lg bg-white backdrop-blur-sm transition-all hover:shadow-xl flex-wrap"
     >
       <div className="absolute -top-4 left-8 rounded-full bg-lightPink/40 p-3 shadow-md">
         <span className="text-2xl">{icon}</span>
