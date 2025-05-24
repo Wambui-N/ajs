@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import OrderForm from "./OrderForm"
+import { motion } from "motion/react"
 
 const priceList = [
   { 
@@ -70,96 +71,120 @@ export default function OrderSection() {
   return (
     <section id="menu" className="w-full bg-beige py-20 relative overflow-hidden">
       <div className="container max-w-5xl mx-auto px-4 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-12">
-            <h2 className="text-4xl lg:text-5xl font-bold text-darkBrown mb-4">Our Cake Menu</h2>
-            <p className="text-darkBrown/70 text-lg mb-8">
-              Browse our selection of delicious cakes
-            </p>
-
-            {/* Size Filter */}
-            <div className="flex justify-center gap-4 mb-12">
-              {["1 KG", "2 KG", "3 KG"].map((size, index) => (
-                <button
-                  key={size}
-                  onClick={() => setSelectedSize(index)}
-                  className={`px-6 py-2 rounded-full transition-all duration-300 ${
-                    selectedSize === index
-                      ? "bg-lightPink text-white shadow-lg"
-                      : "bg-white text-darkBrown hover:bg-lightPink/20"
-                  }`}
-                >
-                  {size}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Cake Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {priceList.map((cake) => (
-              <div
-                key={cake.flavour}
-                className="relative rounded-lg shadow-md overflow-hidden group bg-white flex flex-col min-h-[280px] max-h-[340px] transition-all duration-200 hover:shadow-lg"
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl lg:text-5xl font-bold text-darkBrown mb-4">Our Cake Menu</h2>
+          <p className="text-darkBrown/70 text-lg mb-8">
+            Browse our selection of delicious cakes
+          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex justify-center gap-4 mb-12"
+          >
+            {["1 KG", "2 KG", "3 KG"].map((size, index) => (
+              <button
+                key={size}
+                onClick={() => setSelectedSize(index)}
+                className={`px-6 py-2 rounded-full transition-all duration-300 ${
+                  selectedSize === index
+                    ? "bg-lightPink text-white shadow-lg"
+                    : "bg-white text-darkBrown hover:bg-lightPink/20"
+                }`}
               >
-                {/* Cake Image with bottom gradient and overlayed content */}
-                <div className="relative h-56 w-full flex-1">
-                  <img
-                    src={cake.image}
-                    alt={cake.flavour}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  {/* Top left overlay: badge */}
-                  {cake.badge && (
-                    <div className="absolute top-3 left-3 z-10">
-                      <span className="px-2 py-0.5 bg-lightPink text-darkBrown text-xs font-semibold rounded shadow-sm border border-lightPink/60">
-                        {cake.badge}
-                      </span>
-                    </div>
-                  )}
-                  {/* Bottom gradient overlay */}
-                  <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none" />
-                  {/* Overlayed content: title/price left, kgs/button right */}
-                  <div className="absolute bottom-0 left-0 w-full px-4 pb-4 flex flex-row items-end justify-between z-20">
-                    {/* Left: title and price */}
-                    <div className="flex flex-col items-start gap-1">
-                      <span className="text-darkBrown text-base font-bold drop-shadow-sm">
-                        {cake.flavour}
-                      </span>
-                      <span className="text-lg font-bold text-darkBrown">
-                        KES {cake.prices[selectedSize].toLocaleString()}
-                      </span>
-                    </div>
-                    {/* Right: kgs and order button */}
-                    <div className="flex flex-col items-end gap-1">
-                      <span className="text-xs text-darkBrown/50 mb-1">
-                        {selectedSize + 1} KG
-                      </span>
-                      <button
-                        onClick={() => handleOrder(cake.flavour)}
-                        className="px-6 py-2 rounded-lg bg-darkBrown text-white font-semibold shadow-sm hover:bg-mediumBrown transition-colors"
-                      >
-                        Order
-                      </button>
-                    </div>
+                {size}
+              </button>
+            ))}
+          </motion.div>
+        </motion.div>
+
+        {/* Cake Cards Grid */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.08
+              }
+            }
+          }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {priceList.map((cake, i) => (
+            <motion.div
+              key={cake.flavour}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="relative rounded-lg shadow-md overflow-hidden group bg-white flex flex-col min-h-[280px] max-h-[340px] transition-all duration-200 hover:shadow-lg"
+            >
+              {/* Cake Image with bottom gradient and overlayed content */}
+              <div className="relative h-56 w-full flex-1">
+                <img
+                  src={cake.image}
+                  alt={cake.flavour}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+                {/* Top left overlay: badge */}
+                {cake.badge && (
+                  <div className="absolute top-3 left-3 z-10">
+                    <span className="px-2 py-0.5 bg-lightPink text-darkBrown text-xs font-semibold rounded shadow-sm border border-lightPink/60">
+                      {cake.badge}
+                    </span>
+                  </div>
+                )}
+                {/* Bottom gradient overlay */}
+                <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white via-white/80 to-transparent pointer-events-none" />
+                {/* Overlayed content: title/price left, kgs/button right */}
+                <div className="absolute bottom-0 left-0 w-full px-4 pb-4 flex flex-row items-end justify-between z-20">
+                  {/* Left: title and price */}
+                  <div className="flex flex-col items-start gap-1">
+                    <span className="text-darkBrown text-base font-bold drop-shadow-sm">
+                      {cake.flavour}
+                    </span>
+                    <span className="text-lg font-bold text-darkBrown">
+                      KES {cake.prices[selectedSize].toLocaleString()}
+                    </span>
+                  </div>
+                  {/* Right: kgs and order button */}
+                  <div className="flex flex-col items-end gap-1">
+                    <span className="text-xs text-darkBrown/50 mb-1">
+                      {selectedSize + 1} KG
+                    </span>
+                    <button
+                      onClick={() => handleOrder(cake.flavour)}
+                      className="px-6 py-2 rounded-lg bg-darkBrown text-white font-semibold shadow-sm hover:bg-mediumBrown transition-colors"
+                    >
+                      Order
+                    </button>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </motion.div>
+          ))}
+        </motion.div>
 
-          {/* Note Section */}
-          {/* <div className="mt-12 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-lightPink/20 max-w-3xl mx-auto">
-            <p className="text-sm text-darkBrown/70 leading-relaxed text-center">
-              <span className="font-bold text-darkBrown block mb-2">Note:</span>
-              Prices are for whipped cream cakes. Chocolates, fruit toppings, and toppers are extra.
-              <br />
-              Orders must be placed at least 3 days in advance. 50% deposit required. Delivery available in
-              Nairobi (fee applies).
-            </p>
-          </div> */}
-        </div>
+        {/* Note Section */}
+        {/* <div className="mt-12 p-6 bg-white/80 backdrop-blur-sm rounded-2xl border border-lightPink/20 max-w-3xl mx-auto">
+          <p className="text-sm text-darkBrown/70 leading-relaxed text-center">
+            <span className="font-bold text-darkBrown block mb-2">Note:</span>
+            Prices are for whipped cream cakes. Chocolates, fruit toppings, and toppers are extra.
+            <br />
+            Orders must be placed at least 3 days in advance. 50% deposit required. Delivery available in
+            Nairobi (fee applies).
+          </p>
+        </div> */}
       </div>
 
       {/* Order Modal */}

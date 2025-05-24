@@ -12,7 +12,11 @@ interface FeatureProps {
 function Feature({ title, description, icon }: FeatureProps) {
   return (
     <motion.div 
-      whileHover={{ y: -5 }}
+      whileHover={{ y: -5, boxShadow: "0 8px 32px rgba(0,0,0,0.12)" }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
       className="group relative min-w-[280px] flex-1 rounded-2xl p-8 shadow-lg bg-white backdrop-blur-sm transition-all hover:shadow-xl"
     >
       <div className="absolute -top-4 left-8 rounded-full bg-lightPink/40 p-3 shadow-md">
@@ -57,7 +61,7 @@ export default function About() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.7 }}
             className="relative h-[320px] w-full overflow-hidden rounded-lg shadow-2xl md:h-[480px] md:w-1/2"
           >
             <Image
@@ -75,7 +79,7 @@ export default function About() {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.7 }}
             className="w-full text-center md:w-1/2 md:text-left"
           >
             <h2 className="mb-4 text-4xl font-bold text-darkBrown md:text-5xl">
@@ -98,10 +102,10 @@ export default function About() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.2, staggerChildren: 0.12 }}
           className="mx-auto mt-16 md:mt-24 flex max-w-6xl flex-col justify-center gap-6 md:flex-row md:gap-8"
         >
-          {features.map((f) => (
+          {features.map((f, i) => (
             <Feature key={f.title} {...f} />
           ))}
         </motion.div>

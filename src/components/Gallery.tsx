@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -90,26 +90,16 @@ export default function CakeCarousel() {
     setIsPaused(!isPaused);
   };
 
-  // Animation variants
-  const slideVariants = {
-    enter: (direction: "left" | "right") => ({
-      x: direction === "left" ? 1000 : -1000,
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: "left" | "right") => ({
-      x: direction === "left" ? -1000 : 1000,
-      opacity: 0,
-    }),
-  };
-
   return (
-    <section id="gallery" className="relative min-h-[70vh] overflow-hidden py-20">
+    <section className="relative min-h-[70vh] overflow-hidden py-20">
       <div className="container max-w-5xl mx-auto px-4">
-        <div className="mb-12 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="mb-12 text-center"
+        >
           <h2 className="mb-4 text-4xl font-bold tracking-tight text-darkBrown md:text-5xl">
             Our Cake Gallery
           </h2>
@@ -117,7 +107,7 @@ export default function CakeCarousel() {
             Browse through our collection of handcrafted cake designs. Get
             inspired for your next celebration!
           </p>
-        </div>
+        </motion.div>
 
         {/* Carousel container */}
         <div
@@ -131,10 +121,9 @@ export default function CakeCarousel() {
             <motion.div
               key={currentIndex}
               custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
+              initial={{ opacity: 0, x: direction === "left" ? 1000 : -1000 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: direction === "left" ? -1000 : 1000 }}
               transition={{
                 x: { type: "spring", stiffness: 100, damping: 20 },
                 opacity: { duration: 0.2 },
@@ -208,14 +197,20 @@ export default function CakeCarousel() {
         </div>
 
         {/* Caption below carousel */}
-        <div className="mt-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="mt-8 text-center"
+        >
           <h3 className="mb-2 text-xl font-semibold text-darkBrown drop-shadow-sm md:text-2xl">
             {galleryPhotos[currentIndex].alt}
           </h3>
           <p className="text-sm text-darkBrown/60">
             Photo {currentIndex + 1} of {galleryPhotos.length}
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
