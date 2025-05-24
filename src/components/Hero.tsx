@@ -26,7 +26,7 @@ export default function Hero() {
           </div>
         </div>
         {/* Banner Image */}
-        <div className="mt-8 rounded-[40px] overflow-hidden shadow-lg border border-beige bg-beige">
+        <div className="mt-8 rounded-lg overflow-hidden shadow-lg border border-beige bg-beige">
           <div className="relative w-full h-[320px] md:h-[420px] lg:h-[500px]">
             <Image
               src="/hero cake.jpg"

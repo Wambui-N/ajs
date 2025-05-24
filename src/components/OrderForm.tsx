@@ -1,8 +1,14 @@
 'use client'
 
-import { useState } from "react";
+import { useState } from "react"
 
-const priceList: Record<string, number[]> = {
+interface OrderFormProps {
+  initialFlavour: string
+  initialSize: string
+  onClose: () => void
+}
+
+const priceList: { [key: string]: number[] } = {
   "Vanilla cake": [2500, 3500, 4500],
   "Banana cake": [2500, 3500, 4500],
   "Lemon cake": [2500, 3500, 4500],
@@ -13,55 +19,97 @@ const priceList: Record<string, number[]> = {
   "Fruit cake": [3000, 3800, 4800],
   "Red velvet": [3000, 3800, 4800],
   "White forest": [3000, 3800, 4800],
-};
+}
 
-const flavours = Object.keys(priceList);
-const kgs = ["1 KG", "2 KG", "3 KG"];
-
-export default function OrderForm() {
-  const [flavour, setFlavour] = useState(flavours[0]);
-  const [kg, setKg] = useState(kgs[0]);
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+export default function OrderForm({ initialFlavour, initialSize, onClose }: OrderFormProps) {
+  const [name, setName] = useState("")
+  const [phone, setPhone] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   // Get price based on selection
-  const price = priceList[flavour][kgs.indexOf(kg)];
+  const getPrice = () => {
+    const sizeIndex = parseInt(initialSize.split(" ")[0]) - 1
+    return priceList[initialFlavour]?.[sizeIndex] || 0
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const message = `Hello, I would like to order a ${kg} ${flavour}.\nName: ${name}\nPhone: ${phone}\nPrice: KES ${price}`;
-    const url = `https://wa.me/254712137749?text=${encodeURIComponent(message)}`;
-    window.open(url, "_blank");
-  };
+    e.preventDefault()
+    setIsSubmitting(true)
+    
+    const message = `Hello, I would like to order a ${initialSize} ${initialFlavour}.\nName: ${name}\nPhone: ${phone}\nPrice: KES ${getPrice().toLocaleString()}`
+    const url = `https://wa.me/254712137749?text=${encodeURIComponent(message)}`
+    window.open(url, "_blank")
+    onClose()
+  }
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-lg space-y-5 bg-lightPink/40 p-8 rounded-2xl shadow-lg border border-beige">
-      <h2 className="text-2xl md:text-3xl font-bold mb-2 text-darkBrown text-center">Order a Cake</h2>
-      <p className="text-darkBrown/80 text-center mb-6">Select your cake options and place your order via WhatsApp!</p>
-      <div>
-        <label className="block mb-1 font-medium text-darkBrown">Flavour</label>
-        <select value={flavour} onChange={e => setFlavour(e.target.value)} className="w-full border rounded p-2 bg-white text-darkBrown">
-          {flavours.map(f => <option key={f}>{f}</option>)}
-        </select>
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="bg-lightPink/10 p-4 rounded-lg">
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-darkBrown font-medium">{initialFlavour}</span>
+          <span className="text-darkBrown font-bold text-xl">
+            KES {getPrice().toLocaleString()}
+          </span>
+        </div>
+        <div className="text-sm text-darkBrown/60">
+          Size: {initialSize}
+        </div>
       </div>
+
       <div>
-        <label className="block mb-1 font-medium text-darkBrown">Weight</label>
-        <select value={kg} onChange={e => setKg(e.target.value)} className="w-full border rounded p-2 bg-white text-darkBrown">
-          {kgs.map(k => <option key={k}>{k}</option>)}
-        </select>
+        <label className="block text-sm font-medium text-darkBrown mb-2">
+          Your Name
+        </label>
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="w-full px-4 py-2 rounded-lg border border-lightPink/20 focus:ring-2 focus:ring-lightPink focus:border-transparent"
+          required
+          placeholder="Enter your name"
+        />
       </div>
+
       <div>
-        <p className="text-lg font-semibold text-darkBrown">Price: <span className="text-pink-700">KES {price}</span></p>
+        <label className="block text-sm font-medium text-darkBrown mb-2">
+          Phone Number
+        </label>
+        <input
+          type="tel"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          className="w-full px-4 py-2 rounded-lg border border-lightPink/20 focus:ring-2 focus:ring-lightPink focus:border-transparent"
+          required
+          placeholder="Enter your phone number"
+        />
       </div>
-      <div>
-        <label className="block mb-1 font-medium text-darkBrown">Your Name</label>
-        <input value={name} onChange={e => setName(e.target.value)} required className="w-full border rounded p-2 bg-white text-darkBrown" />
+
+      <div className="bg-lightPink/20 p-4 rounded-lg">
+        <p className="text-sm text-darkBrown/70">
+          <span className="font-bold text-darkBrown block mb-2">Note:</span>
+          Prices are for whipped cream cakes. Chocolates, fruit toppings, and toppers are extra.
+          <br />
+          Orders must be placed at least 3 days in advance. 50% deposit required. Delivery available in
+          Nairobi (fee applies).
+        </p>
       </div>
-      <div>
-        <label className="block mb-1 font-medium text-darkBrown">Your Phone</label>
-        <input value={phone} onChange={e => setPhone(e.target.value)} required className="w-full border rounded p-2 bg-white text-darkBrown" />
+
+      <div className="flex justify-end space-x-4">
+        <button
+          type="button"
+          onClick={onClose}
+          className="px-6 py-2 rounded-lg bg-lightPink text-darkBrown hover:bg-lightPink/10 transition-colors"
+        >
+          Cancel
+        </button>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="px-6 py-2 rounded-lg bg-darkBrown text-white hover:bg-mediumBrown transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isSubmitting ? "Processing..." : "Order via WhatsApp"}
+        </button>
       </div>
-      <button type="submit" className="w-full bg-mediumBrown text-beige py-2 rounded font-semibold hover:bg-pink-700 transition">Order via WhatsApp</button>
     </form>
-  );
+  )
 } 
