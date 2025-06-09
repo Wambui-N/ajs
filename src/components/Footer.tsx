@@ -10,13 +10,16 @@ export default function Footer() {
       <div className="container mx-auto max-w-5xl px-4 py-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Brand Section */}
+
           <div className="space-y-4">
-            <Image
-              src="/logo 2.png"
-              alt="AJ's Cakes"
-              width={200}
-              height={200}
-            />
+            <Link href="/">
+              <Image
+                src="/logo 2.png"
+                alt="AJ's Cakes"
+                width={200}
+                height={200}
+              />
+            </Link>
           </div>
 
           {/* Quick Links */}
