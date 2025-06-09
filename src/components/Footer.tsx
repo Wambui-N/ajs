@@ -3,38 +3,55 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer id="footer" className="bg-darkBrown rounded-t-lg rounded-b-none w-full text-beige">
-      <div className="container max-w-5xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer
+      id="footer"
+      className="w-full rounded-b-none rounded-t-lg bg-darkBrown text-beige"
+    >
+      <div className="container mx-auto max-w-5xl px-4 py-12">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Brand Section */}
           <div className="space-y-4">
-            <Image src="/logo 2.png" alt="AJ's Cakes" width={200} height={200} />
-            <p className="text-beige/80 text-sm">
-              Creating sweet memories with every slice.
-            </p>
+            <Image
+              src="/logo 2.png"
+              alt="AJ's Cakes"
+              width={200}
+              height={200}
+            />
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold mb-4">Quick Links</h4>
+            <h4 className="mb-4 font-semibold">Quick Links</h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/" className="text-beige/80 hover:text-beige text-sm transition-colors">
+                <Link
+                  href="/"
+                  className="text-sm text-beige/80 transition-colors hover:text-beige"
+                >
                   Home
                 </Link>
               </li>
               <li>
-                <Link href="/cakes" className="text-beige/80 hover:text-beige text-sm transition-colors">
+                <Link
+                  href="/cakes"
+                  className="text-sm text-beige/80 transition-colors hover:text-beige"
+                >
                   Our Cakes
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-beige/80 hover:text-beige text-sm transition-colors">
+                <Link
+                  href="/about"
+                  className="text-sm text-beige/80 transition-colors hover:text-beige"
+                >
                   About
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-beige/80 hover:text-beige text-sm transition-colors">
+                <Link
+                  href="/contact"
+                  className="text-sm text-beige/80 transition-colors hover:text-beige"
+                >
                   Contact
                 </Link>
               </li>
@@ -43,7 +60,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold mb-4">Contact Us</h4>
+            <h4 className="mb-4 font-semibold">Contact Us</h4>
             <ul className="space-y-2 text-sm text-beige/80">
               <li>Phone: 0746476788</li>
               <li>Email: ajs.cakes25@gmail.com</li>
@@ -52,15 +69,15 @@ export default function Footer() {
 
           {/* Social Links */}
           <div>
-            <h4 className="font-semibold mb-4">Follow Us</h4>
+            <h4 className="mb-4 font-semibold">Follow Us</h4>
             <div className="flex gap-4">
               <a
                 href="#"
-                className="text-beige/80 hover:text-beige transition-colors p-2"
+                className="p-2 text-beige/80 transition-colors hover:text-beige"
                 aria-label="Facebook"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="h-5 w-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -74,11 +91,11 @@ export default function Footer() {
               </a>
               <a
                 href="https://www.instagram.com/ajs_cakes_?igsh=MXB6OTNxbHZ1ZWpicA=="
-                className="text-beige/80 hover:text-beige transition-colors p-2"
+                className="p-2 text-beige/80 transition-colors hover:text-beige"
                 aria-label="Instagram"
               >
                 <svg
-                  className="w-5 h-5"
+                  className="h-5 w-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -95,10 +112,12 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-[#74342b]/20 mt-12 pt-8 text-center text-sm text-beige/80">
-          <p>&copy; {new Date().getFullYear()} AJ's Cakes. All rights reserved.</p>
+        <div className="mt-12 border-t border-[#74342b]/20 pt-8 text-center text-sm text-beige/80">
+          <p>
+            &copy; {new Date().getFullYear()} AJ's Cakes. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
   );
-} 
+}
