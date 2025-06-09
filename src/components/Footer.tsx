@@ -33,7 +33,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/cakes"
+                  href="#gallery"
                   className="text-sm text-beige/80 transition-colors hover:text-beige"
                 >
                   Our Cakes
@@ -41,7 +41,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/about"
+                  href="#about"
                   className="text-sm text-beige/80 transition-colors hover:text-beige"
                 >
                   About
@@ -49,7 +49,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href="#footer"
                   className="text-sm text-beige/80 transition-colors hover:text-beige"
                 >
                   Contact

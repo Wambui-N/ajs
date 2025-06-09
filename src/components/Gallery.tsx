@@ -91,7 +91,7 @@ export default function CakeCarousel() {
   };
 
   return (
-    <section className="relative min-h-[70vh] overflow-hidden py-20">
+    <section id="gallery" className="relative min-h-[70vh] overflow-hidden py-20">
       <div className="container max-w-5xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
