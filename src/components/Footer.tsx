@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -7,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
-            <h3 className="text-xl font-bold">AJ's Cakes</h3>
+            <Image src="/logo 2.png" alt="AJ's Cakes" width={200} height={200} />
             <p className="text-beige/80 text-sm">
               Creating sweet memories with every slice.
             </p>
@@ -44,10 +45,8 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Contact Us</h4>
             <ul className="space-y-2 text-sm text-beige/80">
-              <li>123 Sweet Street</li>
-              <li>Bakery City, BC 12345</li>
-              <li>Phone: (555) 123-4567</li>
-              <li>Email: info@ajscakes.com</li>
+              <li>Phone: 0746476788</li>
+              <li>Email: ajs.cakes25@gmail.com</li>
             </ul>
           </div>
 
@@ -74,7 +73,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/ajs_cakes_?igsh=MXB6OTNxbHZ1ZWpicA=="
                 className="text-beige/80 hover:text-beige transition-colors p-2"
                 aria-label="Instagram"
               >

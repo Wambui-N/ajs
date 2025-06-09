@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -12,8 +13,8 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-1 flex items-center">
-            <a href="#hero" className="text-lg font-bold text-[#391212] tracking-tight">
-              AJ's Cakes
+            <a href="#hero" className="flex items-center">
+              <Image src="/logo.png" alt="AJ's Cakes" width={80} height={80} />
             </a>
           </div>
 
