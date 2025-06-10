@@ -37,7 +37,7 @@ export default function OrderForm({ initialFlavour, initialSize, onClose }: Orde
     setIsSubmitting(true)
     
       const message = `Hello, I'm ${name} and I would like to order a ${initialSize} ${initialFlavour}.`
-    const url = `https://wa.me/254712137749?text=${encodeURIComponent(message)}`
+    const url = `https://wa.me/254746476788?text=${encodeURIComponent(message)}`
     window.open(url, "_blank")
     onClose()
   }
